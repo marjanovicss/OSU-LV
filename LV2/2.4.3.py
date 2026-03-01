@@ -15,7 +15,7 @@ def ZarotirajSliku(slika):
     ZarotiranaSlika = np.rot90(slika, k = 3)
     plt.figure()
     plt.imshow(ZarotiranaSlika, cmap = "grey")
-    plt.show() # Ovo otvara prozor
+    plt.show()
 
 def ZrcaliSliku(slika):
     ZrcalnaSlika = np.fliplr(slika)
