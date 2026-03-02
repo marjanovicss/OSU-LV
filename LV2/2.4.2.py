@@ -36,7 +36,6 @@ def DohvatiMinMaxAvgVisinuZaZene(podatci):
     print(f"Min:{podatci[PodatciZene, 1].min()} Max:{podatci[PodatciZene, 1].max()} Avg:{podatci[PodatciZene, 1].mean()}")
 
 podatci = np.loadtxt("data.csv", delimiter=",", skiprows = 1)
-podatci = podatci[1::]
 podatci = np.array(podatci, float)
 
 print("Napišite \"a\" za broj osoba na kojim su isvršena mjerenja.")
