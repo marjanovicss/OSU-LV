@@ -4,60 +4,31 @@ import matplotlib.pyplot as plt
 def DohvatiBrojOsoba(podatci):
     print(f"{len(podatci)}")
 
-def PrikaziOdnosVisineiMase(podatci):
-    Visina = podatci[:, 1]
+def DohvatiOdnosVisineiMase(podatci):
     Masa = podatci[:, 2]
-    plt.scatter(Visina, Masa, alpha = 0.5)
-    plt.title("Odnos visine i mase")
-    plt.xlabel("Visina")
-    plt.ylabel("Masa")
+    Visina = podatci[:, 1]
+    plt.scatter(Masa, Visina, alpha = 0.5)
     plt.show()
 
-def DohvatiMjerenjeSvakePedeseteOsobe(podatci):
-    Visina = podatci[1::50, 1]
-    Masa = podatci[1::50, 2]
-    plt.scatter(Visina,Masa, alpha=0.5)
-    plt.title("Odnos visine i mase svake pedesete osobe")
-    plt.xlabel("Visina")
-    plt.ylabel("Masa")
+def DohvatiOdnosVisineiMaseZaSvakuPedesetuOsobu(podatci):
+    Masa = podatci[::50, 2]
+    Visina = podatci[::50, 1]
+    plt.scatter(Masa, Visina, alpha = 0.5)
     plt.show()
 
 def DohvatiMinMaxAvgVisinu(podatci):
     Visina = podatci[:, 1]
-    Masa = podatci[:, 2]
-    print(f"Min:{Visina.min()} Max:{Visina.max()} Avg:{Visina.mean()}")
+    print(f"Min:{np.min(Visina)} Max:{np.max(Visina)} Avg:{np.mean(Visina)}")
 
-def DohvatiMinMaxAvgVisinuZaMuskarce(podatci):
-    PodatciMuskarac = (podatci[:,0] == 1)
-    print(f"Min:{podatci[PodatciMuskarac, 1].min()} Max:{podatci[PodatciMuskarac, 1].max()} Avg:{podatci[PodatciMuskarac, 1].mean()}")
+def DohvatiMinMaxAvgVisinuMZ(podatci):
+    Muskarci = (podatci[:, 0] == 1)
+    Zene = (podatci[:, 0] == 0)
+    print(f"Muskarci: Min:{np.min(podatci[Muskarci, 1])} Max:{np.max(podatci[Muskarci, 1])} Avg:{np.mean(podatci[Muskarci, 1])}")
+    print(f"Zene: Min:{np.min(podatci[Zene, 1])} Max:{np.max(podatci[Zene, 1])} Avg:{np.mean(podatci[Zene, 1])}")
 
-def DohvatiMinMaxAvgVisinuZaZene(podatci):
-    PodatciZene = (podatci[:,0] == 0)
-    print(f"Min:{podatci[PodatciZene, 1].min()} Max:{podatci[PodatciZene, 1].max()} Avg:{podatci[PodatciZene, 1].mean()}")
-
-podatci = np.loadtxt("data.csv", delimiter=",", skiprows = 1)
-podatci = np.array(podatci, float)
-
-print("Napišite \"a\" za broj osoba na kojim su isvršena mjerenja.")
-print("Napišite \"b\" kako bi se prikazao odnos visine i mase.")
-print("Napišite \"c\" kako bi se prikazalo mjerenje za svaku pedesetu osobu.")
-print("Napišite \"d\" kako bi se prikazala minimalna, maksimalna te srednja vrijednost visine.")
-print("Napišite \"e\" kako bi prikazali minimalnu, maksimalnu te srednju vrijednost visine za muškarce.")
-print("Napišite \"f\" kako bi prikazali minimalnu, maksimalnu te srednju vrijednost visine za žene.")
-
-while True:
-    KorisnickiUnos = input()
-    if KorisnickiUnos == "a":
-        DohvatiBrojOsoba(podatci)
-    elif KorisnickiUnos == "b":
-        PrikaziOdnosVisineiMase(podatci)
-    elif KorisnickiUnos == "c":
-        DohvatiMjerenjeSvakePedeseteOsobe(podatci)
-    elif KorisnickiUnos == "d":
-        DohvatiMinMaxAvgVisinu(podatci)
-    elif KorisnickiUnos == "e":
-        DohvatiMinMaxAvgVisinuZaMuskarce(podatci)
-    elif KorisnickiUnos == "f":
-        DohvatiMinMaxAvgVisinuZaZene(podatci)    
-    else:
-        break
+podatci = np.loadtxt("data.csv", delimiter=",", skiprows= 1)
+DohvatiBrojOsoba(podatci)
+DohvatiOdnosVisineiMase(podatci)
+DohvatiOdnosVisineiMaseZaSvakuPedesetuOsobu(podatci)
+DohvatiMinMaxAvgVisinu(podatci)
+DohvatiMinMaxAvgVisinuMZ(podatci)

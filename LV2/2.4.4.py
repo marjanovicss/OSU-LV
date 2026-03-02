@@ -1,13 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-Crna = np.ones((50, 50))
-Bijela = np.zeros((50, 50))
+Crna = np.zeros((50, 50))
+Bijela = np.ones((50, 50))
 
-CrnaBijela = np.hstack((Bijela, Crna))
-BijelaCrna = np.hstack((Crna, Bijela))
-
-Zajedno = np.vstack((CrnaBijela, BijelaCrna))
-plt.imshow(Zajedno, cmap = "grey")
+CrnoBijela = np.hstack([Crna, Bijela])
+BijelaCrna = np.hstack([Bijela, Crna])
+Komplet = np.vstack([CrnoBijela, BijelaCrna])
+plt.imshow(Komplet, cmap = "gray")
 plt.show()
-
