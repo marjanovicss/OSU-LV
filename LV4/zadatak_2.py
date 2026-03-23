@@ -34,4 +34,4 @@ plt.show()
 #maksimalna pogreska u procjeni 
 maxError = max_error(y_test,y_prediction)
 print('Max pogreška u procjeni: {:.3f}'.format(maxError))
-print(f"Model vozila s max pogreškom u procjeni: {X_test_all[abs(y_test-y_prediction) == maxError]['Model'].iloc[0]}")
+print(f"Model vozila s max pogreškom u procjeni: {X_test_all[abs(y_test-y_prediction) == maxError]['Model'].iloc[0]}")##
